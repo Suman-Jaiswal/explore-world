@@ -2,13 +2,14 @@
 .card-container{
   height: auto;  
   width: 300px;
-  border: 2px solid rgba(0,0,0,.2);
+  border: 1px solid rgba(0,0,0,.2);
   border-radius: 5px;
-  /* display: flex;
-  flex-direction: column; */
+  box-shadow: 0 2px 6px 1px rgb(64 60 67 / 50%);
   margin: 20px;
   padding:7px;
-  background-color: 'lightgray';
+}
+.card-container h4{
+  font-size: 13px;
 }
  .exp-container h4 , .exp-container h5, #name{
   margin-bottom: 7px;
@@ -34,17 +35,17 @@ h6{
 .btn{
   /* background-color: blue; */
   position:relative;
-  height: 40px;
-  width: 100px;
-  bottom: 50px;
-  left: 180px;
+  height: 35px;
+  width: 70px;
+  bottom: 40px;
+  left: 200px;
   background-color: rgb(19, 146, 19);
   border: 1px solid black;
   border-radius: 10px;
   cursor: pointer;
   color: white;
-  letter-spacing: 2px;
   font-weight: bold;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 50%);
 }
 .btn a {
   height: 40px;
@@ -63,23 +64,26 @@ span{
   padding: 10px 0px;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  margin-top: 50px;
 }
 .exp-container img {
   height: 350px;
   width: 30%;
   size: inherit;
-  border: 1px solid rgba(0,0,0,.2);
   margin: 15px 0px;
+  box-shadow: 0 2px 7px 1px rgb(64 60 50 / 70%);
 }
 .exp-container .detail1 {
   width: 25%;
   padding: 30px;
 }
+.exp-container .detail1 h2 {
+  font-family: 'Goblin One', cursive;
+}
 .exp-container .detail2 {
   width: 25%;
   padding: 30px;
 }
-
 
 .loader {
   width: 300px;
@@ -95,21 +99,21 @@ span{
   font-weight: 900;
   color: rgb(158, 28, 50);
   letter-spacing: 0.2em;
-  font-size: 20px;
+  font-size: 10px;
 }
   
   .loader::before, .loader::after {
     content: "";
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     background: rgb(158, 28, 50);
     position: absolute;
     animation: load 0.6s infinite alternate ease-in-out;
   }
   
   .loader::before {
-    top: -10px;
+    top: 0px;
   }
   
   .loader::after {
@@ -142,22 +146,30 @@ span{
   100% { left: 280px; height: 30px; width: 15px}
 }
 .back{
-  width: 70px;
-  height: 30px;
-  border-radius: 20px;
+  width: 8vh;
+  height: 8vh;
+  border: 0.5px solid rgba(58, 57, 57, 0.151);
+  border-radius: 100%;
+  background-color: rgb(196, 225, 252);
+  margin: 10px 10px 0px 10px;
+  box-shadow: 0 2px 6px 1px rgb(64 60 67 / 50%);
   display: flex;
+  position: fixed;
   justify-content: center;
   align-items: center;
-  margin: 10px;
-  position: sticky;
-  top: 80px;
-  background-color: blanchedalmond;
-  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  color: black;
   cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
 }
+
 .back a {
   text-decoration: none;
-
+  
+}
+.back a:active {
+ color: black;
+  
 }
 @media only screen and (max-width:700px) {
   .exp-container .detail1 {
@@ -172,4 +184,5 @@ span{
     width: 300px;
     height: 200px;
   }
+ 
 }

@@ -4,13 +4,14 @@ import Card from './components/Card';
 import Explore from './components/Explore';
 import './App.css';
 
+
 function App() {
   var [countries, setCountries] = useState([]);
   var [path, setPath] = useState('');
   var [loading, setLoading] = useState(true)
   var [region, setRegion] = useState('all')
-  // var [err, setErr] = useState(false)
- 
+  var [darkTheme, setDarkTheme] = useState(true)
+
   useEffect(() => {
     fetch(`https://restcountries.eu/rest/v2/${region}`)
       .then(Response => Response.json())
@@ -19,14 +20,18 @@ function App() {
         setLoading(false)
   
       }
-      )
+      ).catch(err => {
+        console.log(err);
+        setCountries([]);
+      })
   
   }, [region])
-  const handleChange = (e) => {
-    setRegion(e.target.value)
+  const handleChange = e => {
+    setRegion(e.target.value);
   }
   const changeSearch = (e) => {
-    setRegion("name/"+e.target.value)
+    e.target.value?
+    setRegion("name/"+e.target.value) : setRegion('all')
   }
 
 
@@ -37,30 +42,52 @@ function App() {
 
   }
 
-  var body = document.body;
+  var body = document.body
   var modeTextD;
   var modeTextL;
   const mode = () => {
+    setDarkTheme(!darkTheme)
     modeTextD = document.getElementById('txtD')
     modeTextL = document.getElementById('txtL')
-    body.classList.toggle('dark-mode');
-    modeTextL.classList.toggle('true');
-    modeTextD.classList.toggle('false')
-
+    modeTextL.classList.toggle('lightL');
+    modeTextD.classList.toggle('lightD');
   }
+  
+  darkTheme? body.style.backgroundColor = 'rgb(34, 33, 33)' : body.style.backgroundColor= 'white'
+  darkTheme? body.style.color = 'white' : body.style.color= 'black'
+  
 
   return (
     loading ?
-      <div className="loader"> <h1>Loading<span id="s1">.</span><span id="s2">.</span><span id="s3">.</span></h1></div>
+      <div className="loader"> <h2>Loading<span id="s1">.</span><span id="s2">.</span><span id="s3">.</span></h2></div>
       :
       <Router>
-        <nav id="navBar">
-          <div className="navbar-brand"><h1>Explore The World</h1></div>
-
+        <nav id="navBar" style={{
+          backgroundColor: darkTheme? 'gray' : 'rgb(243, 230, 230)',
+        }}>
+          <div className="navbar-brand"><h1>Explore The World <img
+          style={{
+            height: '30px',
+            position:'relative',
+            top: '7.5px',
+            boxShadow:  '0 2px 5px 1px rgb(64 60 67 / 50%)',
+            borderRadius: '100%',
+            boxSizing: 'border-box',
+           
+           
+        }}
+          src="favicon.ico" alt="" /> </h1></div>
+          
           <div onClick={mode} className="mode"><img src="moon.png" alt="" id="moon" /> 
-          <span id="txtD">Dark Mode</span>	
-          <span className="txtL" id="txtL">Light Mode</span>	
+          <span id="txtD" className='txtD' >Dark Mode</span>	
+          <span id="txtL">Light Mode</span>
           </div>
+          <div className="scroller" onClick={() =>{
+
+            document.body.scrollTop = 0
+            document.documentElement.scrollTop = 0
+          }
+            }>&#x2191;</div>	
         </nav>
         <Switch>
           <Route path='/explore'  >
@@ -69,11 +96,11 @@ function App() {
 
           <Route path='/'>
             <form action="" method="get" className="selector">
-              <input type="search" name="" id="" placeholder="Search" onChange={changeSearch}  />
+              
               <label >
                <strong>Filter by Continent: </strong> 
               <select name="region" id="" onChange={handleChange} >
-                <option value="#">...</option>
+                <option value="#">All</option>
                 <option value="region/asia">Asia</option>
                 <option value="region/africa">Africa</option>
                 <option value="region/americas">Americas</option>
@@ -81,18 +108,25 @@ function App() {
                 <option value="region/oceania">Oceania</option>
               </select>
               </label>
+              <input type="search" name="" id="" placeholder="Search" onChange={changeSearch}  />
               
             </form>
-            {
-              // err? <h1> Result not found! </h1>
-              // :
-              <div style={styles}>
+            {countries.length>0?
+              <div style={styles} className="home-container">
                  {
-                   countries.map((country, i) => <Card path={path} setPath=   {setPath} country={country} key={i} />)
+                   countries.map((country, i) => <Card path={path} setPath=   {setPath} country={country} key={i}
+                   darkTheme = {darkTheme} />)
+                  
                  }
-              </div>
+              </div> : <h1
+               style={{
+                 textAlign:'center',
+                 marginTop: '100px',
+                 color: 'grey'
+               }}
+              >Result Not Found!</h1>
             }
-            
+           
           </Route>
 
 

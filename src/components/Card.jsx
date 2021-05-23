@@ -5,13 +5,18 @@ import {Link} from 'react-router-dom'
 export default function Card(props) {
 
   const handleClick = (e) => {
-    props.setPath(props.country.alpha3Code);   
+    props.setPath(props.country.alpha3Code);  
+    // document.body.scrollTop = 0
+    // document.documentElement.scrollTop = 0 
   }
+   
 
   return (
-    <div className="card-container" >
+    <div className="card-container"  style={{
+      backgroundColor: props.darkTheme? 'black':'rgb(243, 230, 230)'
+    }}>
         <img 
-        style={{height: '55%', width: 'inherit', size: 'inherit', border: '1px solid rgba(0,0,0,.2)', marginBottom: '15px'}}
+        style={{height: '55%', width: 'inherit', size: 'inherit', marginBottom: '15px'}}
         src={props.country.flag} alt="" />
 
         <h4 id="name"> {props.country.name} </h4> 
