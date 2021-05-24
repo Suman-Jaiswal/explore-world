@@ -13,7 +13,10 @@
   font-weight: 900;
   color: rgb(158, 28, 50);
   letter-spacing: 0.2em;
-  font-size: 20px;
+  font-size: 15px;
+  box-shadow: 0px 2px 5px 1px  rgb(141, 140, 140);
+  border-radius: 50px;
+  overflow: hidden;
 }
   
   .loader::before, .loader::after {
@@ -92,7 +95,7 @@ nav {
   padding: 10px;
   border-radius: 50px;
   /* border: 2px solid rgba(0,0,0,0.4); */
-  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  box-shadow: 0px 2px 5px 1px  rgb(141, 140, 140);
   position: relative;
   right: 80px;
   cursor: pointer;
@@ -123,17 +126,24 @@ nav img{
   display: none;
 }
 .selector{
-  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  box-shadow: 0px 2px 5px 1px  rgb(141, 140, 140);
   height: 100px;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 
 }
-.selector input{
-  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+.selector .searchBar {
+  
   height: 40px;
   width: 40%;
+
+}
+.selector .searchBar input{
+  box-shadow: 0px 2px 5px 1px  rgb(141, 140, 140);
+  height: 40px;
+  width: 100%;
   font-size: 15px;
   text-align: center;
   border-radius: 20px;
@@ -142,8 +152,8 @@ nav img{
 
 }
 .selector select{
-  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
-  height: 30px;
+  box-shadow: 0px 2px 5px 1px  rgb(141, 140, 140);
+  height:30px;
   width: 180px;
   border-radius: 20px;
   outline: none;
@@ -157,7 +167,7 @@ nav img{
 }
 @media only screen and (max-width:700px) {
   .navbar-brand{
-    width: 70%;
+    width: 60%;
     font-size: 20px;
     left: 25px;
   }
@@ -173,16 +183,20 @@ nav img{
   .selector {
     justify-content: space-evenly;
   }
-  .selector input{
+  .selector .searchBar{
    right: 50px;
    width: 150px;
   }
-  .selector select{
-   width: 150px;
-  }
-  .selector label{
+  .selector .select{
    width: 160px;
-   margin-top: -13px;
+   margin-bottom: 18px;
+  }
+  .selector .select select{
+   width: 80%;
+   margin-top: 5px;
+  }
+  .selector .select label{
+   width: 150px;
   }
 }
 .scroller{
@@ -194,7 +208,7 @@ nav img{
   position: fixed;
   right: 10px;
   bottom: 10px;
-  box-shadow: 0 2px 6px 1px rgb(64 60 67 / 50%);
+  box-shadow: 0px 2px 5px 1px  rgb(141, 140, 140);
   display: flex;
   justify-content: center;
   align-items: center;

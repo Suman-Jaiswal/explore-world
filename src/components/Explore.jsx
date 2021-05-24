@@ -26,7 +26,7 @@ const scroller = () =>
       <div className="loader"> <h2>Loading<span id="s1">.</span><span id="s2">.</span><span id="s3">.</span></h2></div>
       : <>
         <div className="back">
-          <Link to="/">
+          <Link to="../">
            {'<<'}
           </Link>
         </div>

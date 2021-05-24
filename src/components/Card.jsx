@@ -13,7 +13,7 @@ export default function Card(props) {
 
   return (
     <div className="card-container"  style={{
-      backgroundColor: props.darkTheme? 'black':'rgb(243, 230, 230)'
+      backgroundColor: props.darkTheme? 'rgb(34, 33, 33)':'rgb(243, 230, 230)'
     }}>
         <img 
         style={{height: '55%', width: 'inherit', size: 'inherit', marginBottom: '15px'}}

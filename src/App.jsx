@@ -11,6 +11,7 @@ function App() {
   var [loading, setLoading] = useState(true)
   var [region, setRegion] = useState('all')
   var [darkTheme, setDarkTheme] = useState(true)
+  var [searchedText, setSearchedText] = useState('')
 
   useEffect(() => {
     fetch(`https://restcountries.eu/rest/v2/${region}`)
@@ -32,6 +33,12 @@ function App() {
   const changeSearch = (e) => {
     e.target.value?
     setRegion("name/"+e.target.value) : setRegion('all')
+    setSearchedText("name/"+e.target.value)
+  }
+  const submitSearch = (e) => {
+    e.preventDefault()
+    setRegion(searchedText) 
+    
   }
 
 
@@ -53,7 +60,7 @@ function App() {
     modeTextD.classList.toggle('lightD');
   }
   
-  darkTheme? body.style.backgroundColor = 'rgb(34, 33, 33)' : body.style.backgroundColor= 'white'
+  darkTheme? body.style.backgroundColor = 'black' : body.style.backgroundColor= 'white'
   darkTheme? body.style.color = 'white' : body.style.color= 'black'
   
 
@@ -95,7 +102,9 @@ function App() {
           </Route>
 
           <Route path='/'>
-            <form action="" method="get" className="selector">
+            <div className="selector">
+
+            <form action="" method="get" className="select" >
               
               <label >
                <strong>Filter by Continent: </strong> 
@@ -108,9 +117,14 @@ function App() {
                 <option value="region/oceania">Oceania</option>
               </select>
               </label>
-              <input type="search" name="" id="" placeholder="Search" onChange={changeSearch}  />
-              
             </form>
+
+                  
+            <form className="searchBar" action="" onSubmit={submitSearch}>
+              <input type="search" name="" id="" placeholder="Search By Name..." onChange={changeSearch}  />
+              </form>
+
+            </div>
             {countries.length>0?
               <div style={styles} className="home-container">
                  {

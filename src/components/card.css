@@ -4,7 +4,7 @@
   width: 300px;
   border: 1px solid rgba(0,0,0,.2);
   border-radius: 5px;
-  box-shadow: 0 2px 6px 1px rgb(64 60 67 / 50%);
+  box-shadow: 0px 2px 5px 1px  rgb(141, 140, 140);
   margin: 20px;
   padding:7px;
 }
@@ -71,7 +71,7 @@ span{
   width: 30%;
   size: inherit;
   margin: 15px 0px;
-  box-shadow: 0 2px 7px 1px rgb(64 60 50 / 70%);
+  box-shadow: 0px 2px 5px 1px  rgb(141, 140, 140);
 }
 .exp-container .detail1 {
   width: 25%;
@@ -152,7 +152,7 @@ span{
   border-radius: 100%;
   background-color: rgb(196, 225, 252);
   margin: 10px 10px 0px 10px;
-  box-shadow: 0 2px 6px 1px rgb(64 60 67 / 50%);
+  box-shadow: 0px 2px 5px 1px  rgb(141, 140, 140);
   display: flex;
   position: fixed;
   justify-content: center;
