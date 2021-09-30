@@ -3,6 +3,10 @@
   padding: 0%;
   scroll-behavior: smooth;
 }
+.btn:focus{
+    border: none !important;
+    box-shadow: none !important;
+}
 
 
 

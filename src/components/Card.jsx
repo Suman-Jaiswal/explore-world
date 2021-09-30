@@ -1,37 +1,42 @@
-import React from 'react';
-import './card.css';
-import {Link} from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { ThemeContext } from '../ThemeContext';
 
-export default function Card(props) {
+export default function CardComponent(props) {
 
-  const handleClick = (e) => {
-    props.setPath(props.country.alpha3Code);  
-    // document.body.scrollTop = 0
-    // document.documentElement.scrollTop = 0 
-  }
-   
+    const {darkMode} = useContext(ThemeContext)
+    const {
+        name,
+        capital,
+        region,
+        alpha2Code,
+        altSpellings,
+        callingCodes
+    } = props.country
 
-  return (
-    <div className="card-container"  style={{
-      backgroundColor: props.darkTheme? 'rgb(34, 33, 33)':'rgb(243, 230, 230)'
-    }}>
-        <img 
-        style={{height: '55%', width: 'inherit', size: 'inherit', marginBottom: '15px'}}
-        src={props.country.flag} alt="" />
+    return (
+        <>
+            <Card style={{ width: '18rem', margin: '10px auto', boxShadow: '0 1px 1px 0 rgba(0,0,0,0.4)' }}
+              bg={darkMode? 'dark': 'light'}
+              text={darkMode? 'light': 'dark'}
+            >
+                <Card.Img variant="top" src={`https://flagcdn.com/256x192/${alpha2Code.toLowerCase()}.webp`} />
+                <Card.Body>
+                    <Card.Title>{name}</Card.Title>
+                    <Card.Text>
+                        {altSpellings.slice(0, 2).map(s => <span className='me-2' >{s}</span>)}
+                    </Card.Text>
+                </Card.Body>
+                <ListGroup className="list-group-flush">
+                    <ListGroupItem>Capital: {capital}</ListGroupItem>
+                    <ListGroupItem>Region: {region}</ListGroupItem>
+                    <ListGroupItem>
+                        Calling codes:   {callingCodes.map(s => <span className='me-2' >{s}</span>)}
+                    </ListGroupItem>
+                </ListGroup>
+            </Card>
+        </>
 
-        <h4 id="name"> {props.country.name} </h4> 
-
-        <h4> <strong>Capital: </strong> {props.country.capital}</h4>
-
-        <h4> <strong>Region: </strong> {props.country.region}</h4>
-
-        <h4> <strong>Population: </strong> {props.country.population}</h4>
-
-        <h4> <strong>Area: </strong> {props.country.area}</h4> 
-
-       <Link to="/explore"> <button onClick={handleClick} className="btn">Explore</button></Link>
-
-    </div>
-  )
+    )
 }
 
